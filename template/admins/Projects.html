@@ -1,0 +1,54 @@
+{% include "admins/nav.html" %}
+
+<h1 class="text-center">How to add Projects</h1>
+<form action="/admin/save_Projects/"  method="post" enctype="multipart/form-data" class="shadow-lg p-4 rounded" >
+    {% csrf_token %}
+    <div>
+        <label>Add Img</label>
+        <input type="file" name="img_Projects" class="form-control shadow-sm" accept="image/*">
+    </div>
+    <div>
+        <label>Projects Name</label>
+        <input type="text" name="Projects_Name" class="form-control shadow-sm" accept="image/*">
+    </div>
+    <div>
+        <label>Projects Info</label>
+        <input type="text" name="Projects_Info" class="form-control shadow-sm" accept="image/*">
+    </div>
+     <div>
+        <label>Projects Link</label>
+        <input type="text" name="Projects_Link" class="form-control shadow-sm" accept="image/*">
+    </div>
+     <div class="text-center mt-3 col-12">
+       <button class="btn btn-primary w-25">Submit</button>
+    </div>
+     <table class="table table-border mt-4">
+        <tr>
+            <th>Action</th>
+            <th>Project Img</th>
+            <th>Projects_Name</th>
+            <th>Projects_Info</th>
+            <th>Projects_Link</th>
+           
+        </tr>
+        {% for i in projects %}
+        <tr>
+            <td>
+                 <a href="/admin/delete_Projects/?id={{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            <td>
+            <img src="/{i.img_Projects}">
+        </td>
+            <td>{{i.Projects_Name}}</td>
+            <td>{{i.Projects_Info}}</td>
+            <td>
+                <a href="{{i.Projects_Link}}">{{i.Projects_Link}}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</form>
+
+{% include "admins/footer.html" %}

@@ -1,0 +1,49 @@
+{% include "admins/nav.html" %}
+
+<h1 class="text-center">How to add Education</h1>
+<form action="/admin/save_Education/"  method="post" enctype="multipart/form-data" class="shadow-lg p-4 rounded" >
+    {% csrf_token %}
+    <div>
+        <label>Start to End Year(2020 - 2022)</label>
+        <input type="text" name="passing_year" class="form-control shadow-sm" >
+    </div>
+    <div>
+        <label>Degree</label>
+        <input type="text" name="Degree" class="form-control shadow-sm" >
+    </div>
+    <div>
+        <label>University</label>
+        <input type="text" name="University" class="form-control shadow-sm" >
+    </div>
+    <div>
+        <label>Grade</label>
+        <input type="text" name="Grade" class="form-control shadow-sm" >
+    </div>
+     <div class="text-center mt-3 col-12">
+       <button class="btn btn-primary w-25">Submit</button>
+    </div>
+     <table class="table table-border mt-4">
+        <tr>
+            <th>Action</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Experience</th>
+            <th>Address</th>
+        </tr>
+        {% for i in Educations %}
+        <tr>
+            <td>
+                 <a href="/admin/delete_Education/?id={{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            <td>{{i.passing_year}}</td>
+            <td>{{i.Degree}}</td>
+            <td>{{i.University}}</td>
+            <td>{{i.Grade}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</form>
+
+{% include "admins/footer.html" %}

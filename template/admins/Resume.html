@@ -1,0 +1,38 @@
+{% include "admins/nav.html" %}
+
+<h1 class="text-center">How to Resume</h1>
+<form action="/admin/save_Resume_link/"  method="post" enctype="multipart/form-data" class="shadow-lg p-4 rounded" >
+    {% csrf_token %}
+    <div>
+        <label>Resume Desc</label>
+        <input type="text" name="Resume_desc" class="form-control shadow-sm" >
+    </div>
+     <div>
+        <label>Resume Link</label>
+        <input type="text" name="Resume_link" class="form-control shadow-sm" >
+    </div>
+    
+     <div class="text-center mt-3 col-12">
+       <button class="btn btn-primary w-25">Submit</button>
+    </div>
+     <table class="table table-border mt-4">
+        <tr>
+            <th>Action</th>
+            <th>Resume Desc</th>
+            <th>Resume Link</th>
+        </tr>
+        {% for i in Resumes %}
+        <tr>
+            <td>
+                 <a href="/admin/delete_Resume/?id={{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            <td>{{i.Resume_desc}}</td>
+            <td>{{i.Resume_link}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</form>
+
+{% include "admins/footer.html" %}

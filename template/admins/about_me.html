@@ -1,0 +1,34 @@
+{% include "admins/nav.html" %}
+
+<h1 class="text-center">How to add About Info</h1>
+<form action="/admin/save_about_me/"  method="post" enctype="multipart/form-data" class="shadow-lg p-4 rounded" >
+    {% csrf_token %}
+    <div>
+        <label>Add Name</label>
+        <textarea type="text" name="Desc" class="form-control shadow-sm" accept="image/*"></textarea>
+    </div>
+   
+     <div class="text-center mt-3 col-12">
+       <button class="btn btn-primary w-25">Submit</button>
+    </div>
+     <table class="table table-border mt-4">
+        <tr>
+            <th>Action</th>
+            <th>Name</th>
+            
+        </tr>
+        {% for i in about_mes %}
+        <tr>
+            <td>
+                 <a href="/admin/delete_Desc/?id={{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            <td>{{i.Desc}}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</form>
+
+{% include "admins/footer.html" %}

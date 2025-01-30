@@ -1,0 +1,69 @@
+{% include "admins/nav.html" %}
+
+<h1 class="text-center">How to add About Info</h1>
+<form action="/admin/save_about_info/"  method="post" enctype="multipart/form-data" class="shadow-lg p-4 rounded" >
+    {% csrf_token %}
+    <div>
+        <label>Profile</label>
+        <input type="text" name="Profile" class="form-control shadow-sm" >
+    </div>
+    <div>
+        <label>Education</label>
+        <input type="text" name="Education" class="form-control shadow-sm" >
+    </div>
+    <div>
+        <label>Language</label>
+        <input type="text" name="Language" class="form-control shadow-sm" >
+    </div>
+    <div>
+        <label>BI Tools:</label>
+        <input type="text" name="Tools" class="form-control shadow-sm" >
+    </div>
+     <div>
+        <label>Other Skills:</label>
+        <input type="text" name="O_Skills" class="form-control shadow-sm" >
+    </div>
+     <div>
+        <label>Interest:</label>
+        <input type="text" name="Interest" class="form-control shadow-sm" >
+    </div>
+      <div>
+        <label>Projects completed:</label>
+        <input type="number" name="Projects_completed" class="form-control shadow-sm" >
+    </div>
+     <div class="text-center mt-3 col-12">
+       <button class="btn btn-primary w-25">Submit</button>
+    </div>
+     <table class="table table-border mt-4">
+        <tr>
+            <th>Action</th>
+            <th>Profile</th>
+            <th>Education</th>
+            <th>Language</th>
+            <th>Tools</th>
+            <th>O_Skills</th>
+            <th>Interest</th>
+            <th>P-c</th>
+
+        </tr>
+        {% for i in about_info %}
+        <tr>
+            <td>
+                 <a href="/admin/delete_about_info/?id={{ i.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            <td>{{i.Profile}}</td>
+            <td>{{i.Education}}</td>
+            <td>{{i.Language}}</td>
+            <td>{{i.Tools}}</td>
+            <td>{{i.O_Skills}}</td>
+            <td>{{i.Interest}}</td>
+            <td>{{i.Projects_completed}}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</form>
+
+{% include "admins/footer.html" %}
