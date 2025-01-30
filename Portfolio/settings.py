@@ -24,6 +24,8 @@ SECRET_KEY = 'django-insecure-xo#0rwk-c#(h-be4_*gyohdw(7)a(th^uud$vxf3jy4q-6gwec
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DEBUG = True  
+
 
 ALLOWED_HOSTS = ['portfolio-oje1.onrender.com','localhost','127.0.0.1']
 
@@ -125,3 +127,13 @@ STATICFILES_DIRS = ['static/']
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+import os
+
+# Your base directory (e.g., the root of your project)
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+
+
+# For static files in production
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # This is where collectstatic will collect files in production

@@ -1,7 +1,12 @@
 from django.shortcuts import render,redirect
 from anmins import models
 
-# Create your views here.
+from django.shortcuts import render
+
+def custom_page_not_found(req, exception):
+    return render(req, '404.html', status=404)
+
+
 
 def home(req):
 	return render(req,"admins/home.html")
