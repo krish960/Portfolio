@@ -361,9 +361,10 @@
 		<br>
 		
 		<div class="row">
+                        {% for i in experience %}
+            
 				<div class="col-md-6">
 					<div class="resume-wrap ftco-animate">
-                        {% for i in experience %}
 						<span class="date">{{i.Years}}</span>
 						<h2>{{i.Skill}}</h2>
 						<span class="position">{{i.Devlopment}}</span>
@@ -374,11 +375,11 @@
 								<li>{{i.heading_info3}}</li>
 							</ul>
 						</p>
-                        {% endfor %}
 					</div>
 
 				</div>
-
+                        {% endfor %}
+                
 				
 				</div>
 			</div>

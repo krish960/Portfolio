@@ -28,7 +28,6 @@ handler404 = custom_page_not_found
 urlpatterns = [
     path('', views.index),  # Home page
     path('7823040317/', adminss.home),  # Specific path for admin
-    re_path(r'^.*$', lambda request: redirect('/')),  # Redirect all undefined paths to home page
     path('admin/IMG/', adminss.IMG),
     path('admin/save_img/', adminss.save_img),
     path('admin/About/', adminss.About),
@@ -53,4 +52,6 @@ urlpatterns = [
     path('admin/Projects/', adminss.Projects),
     path('admin/save_Projects/', adminss.save_Projects),
     path('admin/delete_Projects/', adminss.delete_Projects),
+    re_path(r'^.*$', lambda request: redirect('/')),  
+
 ]
