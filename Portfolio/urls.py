@@ -15,18 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """# Portfolio/urls.py
 from django.contrib import admin
-from django.urls import path
-from website import views  # Import your views
-from anmins import views as adminss
+from django.urls import path, re_path
+from website import views  # Your regular website views
+from anmins import views as adminss  # Admin views (check if this is correct)
 from django.conf.urls import handler404
-from website.views import custom_page_not_found  # Import custom 404 view
+from django.shortcuts import redirect
+from website.views import custom_page_not_found  # Custom 404 view
 
 # Link the handler404 to the custom 404 page
 handler404 = custom_page_not_found
 
 urlpatterns = [
-    path('', views.index),
-    path('7823040317/', adminss.home),
+    path('', views.index),  # Home page
+    path('7823040317/', adminss.home),  # Specific path for admin
+    re_path(r'^.*$', lambda request: redirect('/')),  # Redirect all undefined paths to home page
     path('admin/IMG/', adminss.IMG),
     path('admin/save_img/', adminss.save_img),
     path('admin/About/', adminss.About),
